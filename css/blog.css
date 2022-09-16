@@ -1,0 +1,43 @@
+.articles {
+    margin: 120px auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+#image {
+    /* margin-top: 70px; */
+    width: 500px;
+    height: 300px;
+    margin-left: 100px;
+   
+}
+.right {
+   max-width: 50%;
+   margin-left: 40px;
+}
+.date {
+    color: #7f7e7e;
+
+}
+.description {
+    color: #2d2d2d;
+}
+h1 {
+    color: purple;
+}
+.auteur {
+    color:orange;
+}
+
+
+@media screen and (max-width:900px){
+    #image{
+        width: 80%;
+        height: 80%;
+        margin-left: 20px;
+    }
+    /* .right{
+        margin:0;
+        max-width: 100%;
+    } */
+}
