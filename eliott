@@ -1,0 +1,79 @@
+
+
+
+import telebot
+from telebot.types import ReplyKeyboardMarkup, KeyboardButton
+import os
+from urllib.request import urlretrieve
+from telebot import types
+from telegram import ReplyKeyboardRemove
+import requests
+from telegram.ext import Updater
+
+
+
+
+
+
+# Remplacez le jeton par votre propre jeton de bot
+bot = telebot.TeleBot("6445097325:AAFXVJ1IXlaUb4CJQPF_Tiu4PgQskMSL92Y")
+
+
+
+# Créer le clavier d'accueil avec les quatre menus
+b1 = 'DISCORD 🖥'
+b2 = 'COACHING 📲'
+b3 = 'TABLEAU EXCEL 🔮'
+b4 = 'MEILLEUR BOOKMAKER 💰'
+
+menu_principal = types.ReplyKeyboardMarkup(row_width=2)
+it1 = types.KeyboardButton(b1)
+it2 = types.KeyboardButton(b2)
+it3 = types.KeyboardButton(b3)
+it4 = types.KeyboardButton(b4)
+
+menu_principal.add(it1, it2, it3,it4)
+
+# menu_principal = ReplyKeyboardMarkup(resize_keyboard=True, row_width=4)
+# menu_principal.row(KeyboardButton('DISCORD'), KeyboardButton('COACHING'))
+# menu_principal.row(KeyboardButton('TABLEAU EXCEL'), KeyboardButton('MEILLEUR BOOKMAKER'))
+
+
+
+
+
+#************************Message de bienvenu *****************************************
+@bot.message_handler(func=lambda message: message.text in ["/start"])
+def handle_choice_one(message):
+        bot.reply_to(message, "Bonjour " + message.chat.first_name + "." + "\nBienvenue sur le bot Business et Paris Sportifs d'ELIOTT.\n\nJe suis là pour te permettre d'accéder aux différents services de paris sportifs d'Eliott.\n\nQue ce soit son groupe Discord (pour te former aux paris sporifs gratuitement et parler avec la communauté), son Coaching Privé (pour apprendre à faire entre 250€ et 3500€ par mois dans les paris sportifs), son Tableau Excel (pour connaitre les résultats finaux des matchs dès le coup d'envoi des rencontres) ou accès au Meilleur Bookmaker en ligne pour avoir les meilleurs bonus et les meilleurs cotes.\n\nJe vais te guider pas à pas pour y accéder.\n\n Pour rejoindre un programme ou un groupe donné, il suffit de : \n\n👉🏼 Cliquer sur le bouton que tu souhaites dans le menu ci -dessous\n\n 👉🏼 Ensuite cliquer sur le lien que le bot t'enverra\n\nA toi de jouer maintenant , je te laisse choisir le ou les services que tu souhaites obtenir.", reply_markup=menu_principal)
+
+
+#************************Message pour discord*****************************************
+@bot.message_handler(func=lambda message: message.text in ["DISCORD 🖥"])
+def handle_choice_one(message):
+        bot.reply_to(message, "Pour accéder au canal DISCORD d'ELIOTT, il vous suffit simplement de cliquer sur le lien ci-dessous : https://discord.gg/t6zG2BYQZ5", reply_markup=menu_principal)
+
+#************************Message pour coaching*****************************************
+@bot.message_handler(func=lambda message: message.text in ["COACHING 📲"])
+def handle_choice_one(message):
+        bot.reply_to(message, "Pour accéder au COACHING PRIVE d'Éliott, il vous suffit simplement de cliquer sur le lien ci-dessous : https://www.businessetparissportifs.com/entre-250eur-et-3500eur-par-mois/", reply_markup=menu_principal)
+
+#************************Message pour Taleau excel*****************************************
+@bot.message_handler(func=lambda message: message.text in ["TABLEAU EXCEL 🔮"])
+def handle_choice_one(message):
+        bot.reply_to(message, "Pour accéder au TABLEAU EXCEL d'Éliott, il vous suffit simplement de cliquer sur le lien ci-dessous : https://www.businessetparissportifs.com/tableau/", reply_markup=menu_principal)
+
+#************************Message pour NINECASIONO*****************************************
+@bot.message_handler(func=lambda message: message.text in ["MEILLEUR BOOKMAKER 💰"])
+def handle_choice_one(message):
+        bot.reply_to(message, "Pour accéder au NINECASINO d'Éliott, il vous suffit simplement de cliquer sur le lien ci-dessous : https://www.businessetparissportifs.com/ninecasino-inscription/", reply_markup=menu_principal)
+
+
+
+# Démarrer le bot
+bot.polling()
+
+
+
+
+
